@@ -484,7 +484,9 @@ input[type=text], input[type=password] {
         grid-gap: 20px;
         justify-content: center;
     }
-    
+    .signinbtn >a {
+        font-size: 12px;
+    }
 }
 .a-content {
     display: flex;
