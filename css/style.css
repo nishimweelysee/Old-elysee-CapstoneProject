@@ -4,54 +4,25 @@
     background-image: url("../images/Ellipse\ 1.png");
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
-
-.top_head {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 20px 20px;
-    background-color: #2502FB;
-}
-
-.top_contact {
-   display: flex;
-   flex-direction: row;
-}
-/*
-.signinbtn {
+.top_menu {
+    top: 3px;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;  
-    width: 50%;
-    outline: none !important;
-}*/
-.cont {
-    margin-left: 7px;
+    justify-content: space-between;
 }
-.cont-fone{
-    margin-left: 10%;
+.top_contact .phone {
+    margin-left: 20px;
+}
+.signinbtn :hover {
+    background-color: #F56AAA;
+    color: black;
+}
+.signinbtn > a{
+    color: white;
 }
 .top_btn {
-    position: absolute;
-    background-color: blue;
-    font-size: 16px;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    border-radius: 20px;
-    text-align: center;
-    outline: none;
-}
-.top_btn:hover {
-    background-color: #D700FA;
-    text-decoration: underline;
-}
-.top_fa{
-    color: #E86161;
-    size: 5px;
-}
-.top_btn > a {
-    text-decoration: none;
-    color: white;
+    padding: 15px;
+    background-color: #2502FB;
 }
 .icon-btn {
     background-color: Blue;
@@ -142,17 +113,6 @@ button:hover {
     #navmenu .icon {
         position: absolute;
         display: block
-    }
-    .top_btn {
-        font-size: 12px;
-        padding: 5px 10px;
-        border-radius: 0%;
-    }
-    .top_btn > a {
-        text-decoration: none;
-        color: white;
-        font-size: 12px;
-        right: 0;
     }
     .top_contact {
         font-size: small;
@@ -532,6 +492,11 @@ input[type=text], input[type=password] {
 }
 .a-content .a-title {
     align-self: center;
+    background-color: #D700FA;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
 }
 .a-content .a-items {
     display: grid;
@@ -590,3 +555,4 @@ input[type=text], input[type=password] {
     display: grid;
     grid-template-columns: auto auto auto;
 }
+.a-content .a-title
