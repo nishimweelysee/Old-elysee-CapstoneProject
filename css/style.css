@@ -508,17 +508,16 @@ input[type=text], input[type=password] {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: white;
 }
-.a-content .a-items {
+.a-items {
     display: grid;
     grid-template-areas:
-      'header header main main main main'
-      'menu menu  right right right right'
-      'none none  left left left left'
-      'none none  footer footer footer footer'
-      'none none footer footer footer footer';
+      'header header header main main main'
+      'menu menu  menu right right right'
+      'none none  none left left left'
+      'none none  none footer footer footer'
+      'none none none footer footer footer';
     grid-gap: 20px;
     padding: 30px;
-    justify-items: center;
 }
 
 @media screen and (max-width: 900px) {
@@ -531,29 +530,44 @@ input[type=text], input[type=password] {
         width: 100%;
         margin-left: 2%;
     }
+    .a-item.a-item-2 {
+        width: 100%;
+        grid-area: main;
+    }
+    .a-item.a-item-3 {
+        width: 100%;
+        grid-area: right;
+    }
+    .a-item.a-item-4 {
+        width: 100%;
+        grid-area: left;
+    }
+    .a-item.a-item-5 {
+        width: 100%;
+        grid-area: footer;
+    }
+    .a-item.a-item-6 {
+        width: 100%;
+        grid-area: menu;
+    }
 }
 .a-item.a-item-1 {
-    margin-top: 20px;
+
     grid-area: header;
 }
 .a-item.a-item-2 {
-    width: 80%;
     grid-area: main;
 }
 .a-item.a-item-3 {
-    width: 80%;
     grid-area: right;
 }
 .a-item.a-item-4 {
-    width: 80%;
     grid-area: left;
 }
 .a-item.a-item-5 {
-    width: 80%;
     grid-area: footer;
 }
 .a-item.a-item-6 {
-    width: 80%;
     grid-area: menu;
 }
 .a-item.a-item-2 >p,.a-item.a-item-3 >p,.a-item.a-item-4 > p,.a-item.a-item-6 >div {
@@ -561,10 +575,17 @@ input[type=text], input[type=password] {
     border-radius: 5px;
     padding: 30px;
 }
+.a-item.a-item-2 >p,.a-item.a-item-3 >p,.a-item.a-item-4 > p{
+    align-self: center;
+}
 .a-item .a-item-5-img {
     display: grid;
     grid-template-columns: auto auto auto;
 }
 .contactme_btn button a {
     color: white;
+}
+.a-content .a-items .a-item {
+    background-color:#E3ACEC;
+    width: 100%;
 }
