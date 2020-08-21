@@ -235,13 +235,18 @@ input[type=text], input[type=password] {
     margin-bottom: 15px;
     display: flex;
   }
-
+  .wrap-input1000 {
+    width: 100%;
+    position: relative;
+    border-bottom: 2px solid rgba(255,255,255,0.24);
+    margin-bottom: 15px;
+    display: flex;
+  }
   
   .input100 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 16px;
     color: #fff;
-  
     display: flex;
     flex-direction: row;
     width: 100%;
