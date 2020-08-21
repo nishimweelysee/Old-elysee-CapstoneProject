@@ -476,16 +476,16 @@ input[type=text], input[type=password] {
 @media screen and (max-width: 500px) {
     .b-head {
         display: grid;
-        grid-template-columns:400px;
-        grid-template-rows:330px;
+        grid-template-columns:350px;
+        grid-template-rows:300px;
         justify-content: center;
     }
     .b-list {
         margin-top: 10%;
         padding: 20px;
         display: grid;
-        grid-template-columns:200px 200px;
-        grid-template-rows:250px 250px;
+        grid-template-columns:180px 180px;
+        grid-template-rows:200px 200px;
         grid-gap: 20px;
         justify-content: center;
     }
