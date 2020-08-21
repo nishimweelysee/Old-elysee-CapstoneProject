@@ -485,7 +485,10 @@ input[type=text], input[type=password] {
         justify-content: center;
     }
     .signinbtn >a {
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .fa-phone {
+        display: none;
     }
 }
 .a-content {
