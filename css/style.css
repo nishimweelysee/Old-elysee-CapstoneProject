@@ -163,7 +163,6 @@ button:hover {
 .content_info {
     display: flex;
     flex-direction: column;
-    padding: 30px;
 }
 
 
@@ -281,14 +280,16 @@ input[type=text], input[type=password] {
   .cont-myform {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+
 }
 .contact-frm {
     position: relative;
     align-self: center;
     border: solid;
     margin: 0px 30px 30px 30px;
-    padding: 20px;
+    padding: 8px;
+    width:60%
 }
 .cont-myform .contactme-lbl {
     display: flex;
@@ -300,6 +301,7 @@ input[type=text], input[type=password] {
     margin-left: 40%;
     margin-right: 40%;
     margin-top: 30px;
+    padding: 5px 10px;
     
 }
 
