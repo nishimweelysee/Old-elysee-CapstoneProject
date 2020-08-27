@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Nishimwe Elysee">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinle Blog Page </title>
+    <link rel="stylesheet" href="assests/css/style.css">
+    <link rel="stylesheet" href="assests/css/fontawesome-free-5.13.0-web/css/all.css">
+    <script src="assests/js/script.js"></script>
+</head>
+
+<body>
+    <header>
+        <div id="topmenu">
+            <i class="fa fa-envelope"> nishimwelys@gmail.com</i>
+            <i id="phone" class="fa fa-phone"> +250780781546</i>
+            <div>
+                <a href="signin.html">Sign in</a>
+            </div>
+        </div>
+        <nav>
+            <ul id="topnav" class="topnavclass">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdownbtn">Blog <span class="fa fa-angle-down"></span></a>
+                    <div class="dropdown-menu" role="menu">
+                        <a href="sblog.html">Single Blog</a>
+                        <a href="mblog.html">More Blog</a>
+                    </div>
+                </li>
+                <li><a href="aboutme.html">About Me</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <a href="javascript:void(0);" id="id-icon" class="icon"><button onclick="myFunction()" class="icon-btn"><i class="fa fa-bars"></i></button></i></a>
+            </ul>
+        </nav>
+    </header>
+    <section id="sb-content">
+
+        <section class="smain-blog sb-data">
+            <figure >
+                <img width="80%" height="200px" alt="THis the main blogs">
+                <figcaption>
+                    <h1>Blog Post Title</h1>
+                    <p>This Blog Have more Information , some of them are here you can read them</p>
+                </figcaption>
+            </figure>
+        </section>
+        <section class="search sb-data">
+                <p>Search</p>
+                <form class="example">
+                    <div>
+                        <input type="text" placeholder="Search.." name="search" required>
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                    </div>
+                </form>
+        </section>
+        <section class="recent sb-data">
+            <h2>Recent Blog Post</h2>
+            <ul>
+                <li>Newest Blog Post</li>
+                <li>Second Newest Blog Post</li>
+                <li>Thirst Newest Blog Post</li>
+                <li>Fourth Newest Blog Post</li>
+            </ul>
+        </section>
+        <section class="Subscribe sb-data">
+            <form action="" method="POST" class="example">
+                <div class="form-data">
+                <input type="email" placeholder="email" required>
+                <button type="submit" >Subscribe</button>
+                </div>
+            </form>
+        </section>
+        <section class="comment sb-data">
+            <form action="" method="POST" class="example">
+                <h3>Comment</h3>
+                <textarea placeholder="Type Your Comment Here" class="textarea" required></textarea>
+                <div>
+                    <button type="submit">Save</button> <button type="submit">Cancel</button>
+                </div>
+            </form>
+        </section>
+    </section>
+    <footer>
+        <div class="top-footer">
+            <div class="address data">
+                <div>
+                    <h3>Address</h3>
+                </div>
+                <div class="item-footer"><button class="icon-btn"><i class="fas fa-map-marker-alt"></i></button><span> KIGALI-RWANDA</span></div>
+                <div class="item-footer"><button class="icon-btn"><i class="fas fa-street-view"></i></button><span> KG 368 st 33</span></div>
+            </div>
+            <div class="call data">
+                <h3>Call on </h3>
+                <div class="item-footer"><button class="icon-btn"><i class="far fa-envelope"></i></button><span>+250780781546</span></div>
+                <div class="item-footer"><button class="icon-btn"><i class="fas fa-phone"></i></button><span>nishimwelys@gmail.com</span></div>
+            </div>
+            <div class="available data">
+                <h3>Available</h3>
+                <div class="item-footer"><button class="icon-btn"><i class="fab fa-twitter"></i></button><span>+250780781546</span></div>
+                <div class="item-footer"><button class="icon-btn"><i class="fab fa-facebook"></i></button><span>nishimwelys@gmail.com</span></div>
+                <div class="item-footer"><button class="icon-btn"><i class="fab fa-whatsapp"></i></button><span>+250780781546</span></div>
+            </div>
+        </div>
+        <div class="down-footer">
+            <p>All Right Reserved Kigali@ 2020</p>
+        </div>
+    </footer>
+</body>
+
+</html>
