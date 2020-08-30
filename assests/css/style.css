@@ -302,7 +302,6 @@ input[type=password] {
     margin: 8px 0;
     display: block;
     border: none;
-    border-radius: 40px;
     text-align: center;
     outline: none;
 }
