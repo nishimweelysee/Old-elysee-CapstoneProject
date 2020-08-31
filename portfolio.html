@@ -13,30 +13,28 @@
 
 <body>
     <header>
-        <div id="topmenu">
-            <i class="fa fa-envelope"> nishimwelys@gmail.com</i>
-            <i id="phone" class="fa fa-phone"> +250780781546</i>
-            <div>
-                <a href="signin.html">Sign in</a>
-                <h3 id="username-top"></h3>
-            </div>
-        </div>
         <nav>
             <ul id="topnav" class="topnavclass">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdownbtn">Blog <span class="fa fa-angle-down"></span></a>
-                    <div class="dropdown-menu" role="menu">
-                        <a href="sblog.html">Single Blog</a>
-                        <a href="mblog.html">More Blog</a>
-                    </div>
-                </li>
+                <li><a href="mblog.html">Blog</a></li>
                 <li><a href="aboutme.html">About Me</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
                 <a href="javascript:void(0);" id="id-icon" class="icon"><button onclick="myFunction()" class="icon-btn"><i class="fa fa-bars"></i></button></i></a>
             </ul>
         </nav>
+        <div class="nav-right">
+            <a href="signin.html" id="signin-top"><button>Sign in</button></a>
+            <div id="user-option" role="button" onclick="showoption()" hidden>
+                <img src="https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg" width="40px" height="40px"  id="user-img"><i class="fas fa-caret-down"></i>
+                <ul>
+                    <li><a id="top-username">Username</a></li>
+                    <li><a href="#">Update Profile</a></li>
+                    <li><a href="signin.html" id="btnlogout">Sign out</a></li>
+                </ul>
+                
+            </div>
+        </div>
     </header>
     <section class="content">
 
@@ -48,12 +46,12 @@
                 <div class="p-item p-item1">
                     <h3>Libray Management System</h3>
                     <p>Desktop Application of Libray management System that ru on one computer, where we record the books, and clients , it’s buld using java & swing interface desgin</p>
-                    <button>Click here to view</button>
+                    <a href="https://github.com/nellyganza/Libray-System.git" target="blank-page"><button>Click here to view</button></a>
                 </div>
                 <div class="p-item p-item2">
                     <h3>Libray Management System with RMI</h3>
                     <p>Desktop Application of Libray management System that run in diffrent computers through network and using , where we record the books, and clients , it’s buld using java &b swing interface desgin</p>
-                    <button>Click here to view</button>
+                    <a href="https://github.com/nellyganza/Java-Assignment.git" target="blank-page"><button>Click here to view</button></a>
                 </div>
                 <div class="p-item p-item3">
                     <h3>NEFace</h3>

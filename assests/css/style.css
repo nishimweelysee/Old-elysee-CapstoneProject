@@ -2,13 +2,10 @@ body {
     background-color: #002D68;
     font-family: "Segoe UI", Arial, sans-serif;
 }
-
-
-/* header {
-    position: fixed;
-    width: 100%;
-} */
-
+#user-img {
+    border-radius: 50%;
+    /* background-image: url(../img/Avatar/icons8-circled-user-male-skin-type-6-48.png); */
+}
 p,
 h1,
 h2,
@@ -41,7 +38,12 @@ a {
     background-color: #7801ff;
     padding: 0.8em;
 }
-
+@media only screen and (max-width:800px) {
+    header{
+        display: grid;
+        grid-template-columns: 75% 25% !important;
+    }
+}
 @media only screen and (max-width:700px) {
     #topmenu {
         background-color: #022655;
@@ -49,6 +51,10 @@ a {
         display: grid;
         grid-template-columns: auto auto auto;
         font-size: 12px;
+    }
+    header{
+        display: grid;
+        grid-template-columns: 70% 30% !important;
     }
 }
 
@@ -60,20 +66,28 @@ a {
         grid-template-columns: auto auto auto;
         font-size: 12px;
     }
-    #topmenu a {
-        font-size: 12px;
-    }
-    #topmenu #phone {
-        display: none;
-    }
+}
+header{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    background-color: #022655;
 }
 
 nav>ul {
     list-style-type: none;
-    background-color: #022655;
     overflow: hidden;
     margin: 0;
     padding: 0;
+}
+header #left-side-nav {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: blueviolet !important;
+    height: 100%;
+}
+#left-side-nav>a button {
+    margin: 10px;
+    align-self: flex-end;
 }
 
 nav>ul>li {
@@ -583,6 +597,10 @@ input[type=password] {
     padding: 2px;
     cursor: pointer;
 }
+#main-blog:hover{
+    padding: 20px;
+    cursor: pointer;
+}
 #main-blog {
     padding: 5%;
     margin-top: 2px; 
@@ -682,3 +700,64 @@ form.example input[type=text],form.example input[type=email] {
 .sb-data {
     background-color: #022655;
 }
+
+code {
+    background: rgb(248, 244, 244);
+    border: 1px solid #ddd;
+    border-left: 3px solid #1356e6;
+    color: rgb(20, 19, 19);
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 1.6em;
+    max-width: 50%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+
+/* Upload profile image */
+
+
+.choose::-webkit-file-upload-button {
+    color: #ddd;
+    display: inline-block;
+    background: #1356e6;
+    border: none;
+    outline: none !important;
+    padding: 7px 15px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 10pt;
+  }
+  .choose::-webkit-file-upload-button:hover {
+      background-color: #7801ff;
+  }
+
+
+  .nav-right {
+      display: flex;
+      flex-direction: row;
+      padding: 10px;
+      margin-right: 10px;
+  }
+  .nav-right >div {
+      position: absolute;
+  }
+
+  .nav-right>div>ul {
+    display: none;
+    list-style-type: none;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.nav-right>div>ul>li:hover {
+    background-color: #7801ff;
+}
+
+span,div>i {color: rgb(238, 231, 231);}

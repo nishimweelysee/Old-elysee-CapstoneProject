@@ -14,10 +14,8 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 //sign in
 
-document.getElementById('signinid').onclick= function() {
+function withUsername(uname,pwd){
     // var chack = document.getElementById('uname').checkValidity() && getElementById('pwd').checkValidity();
-    var uname = document.getElementById('uname').value;
-    var pwd = document.getElementById('pwd').value;
     firebase.database().ref('users/' + uname).on('value', function(snapshot) {
 
         if (snapshot.val().Username == uname && snapshot.val().Password == pwd) {
@@ -35,6 +33,11 @@ document.getElementById('signinid').onclick= function() {
             alert("Invalid Username");
         }
     })
+    clear();
+}
+function clear(){
+    document.getElementById('uname').value = "";
+    document.getElementById('pwd').value ="";
 }
 
 
@@ -46,23 +49,16 @@ document.getElementById('google-signin').onclick =  function (){
 
     firebase.auth().getRedirectResult().then(function(result) {
         if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
           var token = result.credential.accessToken;
-          // ...
         }
-        // The signed-in user info.
         var user = result.user;
         console.log(result);
       }).catch(function(error) {
           console.log(error.message);
-        // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
-        // The email of the user's account used.
         var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        // ...
       });
     // firebase.auth().signInWithPopup(provider).then(function(result) {
     //     // This gives you a Google Access Token. You can use it to access the Google API.
@@ -83,3 +79,57 @@ document.getElementById('google-signin').onclick =  function (){
     //     console.log(error.message);
     //   });
 };
+var btnLogin = document.getElementById('signinid');
+btnLogin.addEventListener('click', e=>{
+	var email = document.getElementById('uname').value;
+    var password = document.getElementById('pwd').value;
+
+	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // ...
+      });
+});
+
+var btnLogout = document.getElementById('btnlogout');
+btnLogout.addEventListener('click',e=>{
+	firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+        console.log('Looged Out');
+      }).catch(function(error) {
+        // An error happened.
+        console.log(error.message);
+      });
+});
+var img = document.getElementById('user-img');
+var signbtn = document.getElementById('signin-top');
+var photobtn = document.getElementById('user-option');
+firebase.auth().onAuthStateChanged(firebaseUser => {
+	if(firebaseUser){
+        console.log(firebaseUser);
+        
+        firebase.storage().ref('Users/' +firebaseUser.uid+'/profile.jpg').getDownloadURL().then(imgUrl =>{
+            img.src = imgUrl;
+        })
+        signbtn.style.display = "none";
+        photobtn.style.display = "inline";
+	}
+	else{
+        console.log('not looged in');
+        signbtn.style.display = "inline";
+        photobtn.style.display = "none";
+        img.src = "https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg";
+	}
+});
+
+
+function showoption(){
+    var op = document.getElementById('user-option');
+    var ulElement = document.querySelector( "#user-option ul" );
+    var style = document.querySelector( "#user-option ul" ).style.display;
+    if(style=="none")
+        ulElement.style.display = "inline";
+    else
+        ulElement.style.display = "none";
+}
