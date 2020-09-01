@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Nishimwe Elysee">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishimwe Elysee Website Landing page </title>
+  <link rel="stylesheet" href="assests/css/fontawesome-free-5.13.0-web/css/all.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <link rel="stylesheet" href="assests/css/backend.css">
+    
+</head>
+<body>
+
+<h2>Admin </h2>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'account')">Login Options</button>
+  <button class="tablinks" onclick="openCity(event, 'blog')">Blogs</button>
+  <button class="tablinks" onclick="openCity(event, 'profile')">Profile</button>
+  <button class="tablinks" onclick="openCity(event, 'contact')">Contacts</button>
+  <button class="tablinks" onclick="openCity(event, 'other')">Others</button>
+</div>
+
+
+<!-- First Tab -->
+
+<div id="account" class="tabcontent">
+  <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign in</button>
+  <label><button id="signoutbtn">Sign out</button></label>
+  <label><button>Update Account info</button></label>
+
+    <!-- Login from -->
+
+    <div id="id01" class="modal">
+      
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="assests/img/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <input type="email" placeholder="Enter Email" id="inuname" required>
+
+          <input type="password" placeholder="Enter Password" id="inpsw" required>
+            
+          <button type="submit" id="loginbtn">Login</button>
+        </div>
+
+        <div class="container">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- End of the Login from -->
+
+<!-- Sign up from -->
+  <div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="modal-content" >
+      <div class="container">
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <input type="text" placeholder="Enter Email" id="upemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <input type="password" placeholder="Enter Password" id="uppsw" onchange = "validatePassword()"  required>
+        <input type="password" placeholder="Repeat Password" id="uppsw-repeat" onkeyup = "validatePassword()"  required>
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn" id="signupbtnid">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End of the Sign up form  -->
+</div>
+
+<div id="blog" class="tabcontent">
+  <div class="content">
+    <div class="image">
+        <img id="imageid" width="400px" height="200px">
+        <input type="file" onchange="onFileSelected(event)">
+    </div>
+    <div class="title">
+        <input id="titleid" type="text" placeholder="Type Blog Title">
+    </div>
+    <div class="desc">
+        <input id="descid" type="text" placeholder="Type Blog Description">
+    </div>
+    <div class="date">
+        <input id="dateid" type="datetime" placeholder="Type Blog Date">
+    </div>
+    <div class="intro">
+        <textarea id="introid" type="text" placeholder="Type Blog Introduction"></textarea>
+    </div>
+    <div class="cont">
+        <textarea id="contid" type="text" placeholder="Type Blog Content"></textarea>
+    </div>
+    <div>
+        <button type="submit" id="submit">Save</button><button type="reset">Reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- End of First Tab -->
+
+<div id="profile" class="tabcontent">
+  <p>My Profile</p>
+</div>
+
+<div id="contact" class="tabcontent">
+  <p>Contacts</p>
+</div>
+<div id="other" class="tabcontent">
+  <p>Other Option</p>
+</div>
+<script src="assests/js/blogpost.js"></script>
+</body>
+</html> 

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Nishimwe Elysee">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishimwe Elysee Website Landing page </title>
+    <link rel="stylesheet" href="assests/css/fontawesome-free-5.13.0-web/css/all.css">
+     <!-- The core Firebase JS SDK is always required and must be listed first -->
+     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+      https://firebase.google.com/docs/web/setup#available-libraries -->
+     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+     <link rel="stylesheet" href="assests/css/backend.css">
+     <script src="assests/js/blogpost.js"></script>
+</head>
+
+<body>
+    <form class="content">
+        <div class="image">
+            <img id="imageid" width="400px" height="200px">
+            <input type="file">
+        </div>
+        <div class="title">
+            <input id="titleid" type="text" placeholder="Type Blog Title">
+        </div>
+        <div class="desc">
+            <input id="descid" type="text" placeholder="Type Blog Description">
+        </div>
+        <div class="date">
+            <input id="dateid" type="datetime" placeholder="Type Blog Date">
+        </div>
+        <div class="intro">
+            <textarea id="introid" type="text" placeholder="Type Blog Introduction"></textarea>
+        </div>
+        <div class="cont">
+            <textarea id="contid" type="text" placeholder="Type Blog Content"></textarea>
+        </div>
+        <div>
+            <button type="submit" id="submit">Save</button><button type="reset">Reset</button>
+        </div>
+    </form>
+</body>
+
+</html>

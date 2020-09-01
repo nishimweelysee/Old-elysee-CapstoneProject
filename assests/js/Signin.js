@@ -1,18 +1,3 @@
- // Your web app's Firebase configuration
- var firebaseConfig = {
-    apiKey: "AIzaSyDjCatQB9VeBlVm7vaQQhRIrYQ-a7O_cLo",
-    authDomain: "elysee-capstoneproject.firebaseapp.com",
-    databaseURL: "https://elysee-capstoneproject.firebaseio.com",
-    projectId: "elysee-capstoneproject",
-    storageBucket: "elysee-capstoneproject.appspot.com",
-    messagingSenderId: "1048146286907",
-    appId: "1:1048146286907:web:a1c19eb4d8f5d65ac07f1e",
-    measurementId: "G-BRPLLNHCND"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-//sign in
 
 function withUsername(uname,pwd){
     // var chack = document.getElementById('uname').checkValidity() && getElementById('pwd').checkValidity();
@@ -91,45 +76,3 @@ btnLogin.addEventListener('click', e=>{
         // ...
       });
 });
-
-var btnLogout = document.getElementById('btnlogout');
-btnLogout.addEventListener('click',e=>{
-	firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-        console.log('Looged Out');
-      }).catch(function(error) {
-        // An error happened.
-        console.log(error.message);
-      });
-});
-var img = document.getElementById('user-img');
-var signbtn = document.getElementById('signin-top');
-var photobtn = document.getElementById('user-option');
-firebase.auth().onAuthStateChanged(firebaseUser => {
-	if(firebaseUser){
-        console.log(firebaseUser);
-        
-        firebase.storage().ref('Users/' +firebaseUser.uid+'/profile.jpg').getDownloadURL().then(imgUrl =>{
-            img.src = imgUrl;
-        })
-        signbtn.style.display = "none";
-        photobtn.style.display = "inline";
-	}
-	else{
-        console.log('not looged in');
-        signbtn.style.display = "inline";
-        photobtn.style.display = "none";
-        img.src = "https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg";
-	}
-});
-
-
-function showoption(){
-    var op = document.getElementById('user-option');
-    var ulElement = document.querySelector( "#user-option ul" );
-    var style = document.querySelector( "#user-option ul" ).style.display;
-    if(style=="none")
-        ulElement.style.display = "inline";
-    else
-        ulElement.style.display = "none";
-}

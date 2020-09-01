@@ -1,17 +1,3 @@
- // Your web app's Firebase configuration
- var firebaseConfig = {
-    apiKey: "AIzaSyDjCatQB9VeBlVm7vaQQhRIrYQ-a7O_cLo",
-    authDomain: "elysee-capstoneproject.firebaseapp.com",
-    databaseURL: "https://elysee-capstoneproject.firebaseio.com",
-    projectId: "elysee-capstoneproject",
-    storageBucket: "elysee-capstoneproject.appspot.com",
-    messagingSenderId: "1048146286907",
-    appId: "1:1048146286907:web:a1c19eb4d8f5d65ac07f1e",
-    measurementId: "G-BRPLLNHCND"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 var nameV, passV, phoneV, emailV,photoV;
 
@@ -38,32 +24,26 @@ fileButton.addEventListener('change', function(e){
     //Get File
     file = e.target.files[0];
 });
-
-function signupWithEmailAndPass(){
-    firebase.auth().createUserWithEmailAndPassword(emailV,passV).then(auth=>{
+document.getElementById('insert').onclick = function signupWithEmailAndPass(){
+    ready();
+    firebase.auth().createUserWithEmailAndPassword(emailV,passV).then(async auth=>{
         firebase.storage().ref('Users/'+ auth.user.uid+'/profile.jpg').put(file).then(function(){
-            console.log('Successfully uploaded')
+            console.log('Successfully uploaded');
         }).catch(e=> {
             console.log(e.message)
         });
+        firebase.database().ref('users/' + auth.user.uid).set({
+            Username: nameV,
+            Password: passV,
+            PhoneNumber: phoneV,
+            Email: emailV,
+            ProfileImage:photoV
+        }).catch(e=>{
+            console.log(e.message);
+            }
+        );
+        clear();
     }).catch(e=> {
         console.log(e.message)
     });
 }
-
-
-// This is the Insert Operation
-document.getElementById('insert').onclick = function() {
-    ready();
-    signupWithEmailAndPass();
-    console.log(nameV, passV, phoneV, emailV,photoV);
-    firebase.database().ref('users/' + nameV).set({
-        Username: nameV,
-        Password: passV,
-        PhoneNumber: phoneV,
-        Email: emailV,
-        ProfileImage:photoV
-    });
-    clear();
-}
-
