@@ -35,16 +35,12 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
-var img,fimg,signbtn,photobtn;
-function getData(){
-    img = document.getElementById('user-img');
-    fimg = document.getElementById('edit-img');
-    signbtn = document.getElementById('signin-top');
-    photobtn = document.getElementById('user-option');
-}
 
 function putImage(imgUrl,st1,st2){
-    getData();
+    var img = document.getElementById('user-img');
+    var fimg = document.getElementById('edit-img');
+    var signbtn = document.getElementById('signin-top');
+    var photobtn = document.getElementById('user-option');
     img.src = imgUrl;
     fimg.src = imgUrl;
     signbtn.style.display = st1;
@@ -84,6 +80,8 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
         
         firebase.storage().ref('Users/' +firebaseUser.uid+'/profile.jpg').getDownloadURL().then(imgUrl =>{
             putImage(imgUrl,"none","inline");
+        }).catch(error=>{
+            console.log(error.message);
         })
         firebase.database().ref('users/' + firebaseUser.uid).on('value', function(snapshot) {
             console.log(snapshot.val().Username, snapshot.val().PhoneNumber, snapshot.val().Email);
