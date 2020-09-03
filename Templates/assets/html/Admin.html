@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Nishimwe Elysee">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nishimwe Elysee Website Landing page </title>
+  <link rel="stylesheet" href="../css/fontawesome-free-5.13.0-web/css/all.css">
+  <link rel="stylesheet" href="../css/style.css">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-auth.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.1/firebase-storage.js"></script>
+    <link rel="stylesheet" href="../css/backend.css">
+    
+</head>
+<body>
+  <header>
+    <nav>
+        <ul id="topnav" class="topnavclass">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="mblog.html">Blog</a></li>
+            <li><a href="aboutme.html">About Me</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li class="adminid"><a href="Admin.html">Admin</a></li>
+            <a href="javascript:void(0);" id="id-icon" class="icon"><button onclick="myFunction()" class="icon-btn"><i class="fa fa-bars"></i></button></i></a>
+        </ul>
+    </nav>
+    <div class="nav-right">
+        <a href="signin.html" id="signin-top"><button>Sign in</button></a>
+        <div id="user-option" role="button" onclick="showoption()" hidden>
+            <img src="https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg" width="40px" height="40px"  id="user-img"><i class="fas fa-caret-down"></i>
+            <ul>
+                <li><a id="top-username">Username</a></li>
+                <li><a href="#" role="button" onclick="openForm()">Update Profile</a></li>
+                <li><a href="signin.html" id="btnlogout" role="button" onclick="logout()">Sign out</a></li>
+            </ul>
+            
+        </div>
+    </div>
+</header>
+<h2>Admin </h2>
+
+
+<div class="tab">
+  <button class="tablinks" onclick="openCity(event, 'account')">Login Options</button>
+  <button class="tablinks" onclick="openCity(event, 'blog')">Blogs</button>
+  <button class="tablinks" onclick="openCity(event, 'profile')">Profile</button>
+  <button class="tablinks" onclick="openCity(event, 'contact')">Contacts</button>
+  <button class="tablinks" onclick="openCity(event, 'portfolio')">Portfolio</button>
+  <button class="tablinks" onclick="openCity(event, 'other')">Others</button>
+</div>
+
+
+<!-- First Tab -->
+
+<div id="account" class="tabcontent">
+  <button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Sign Up</button>
+  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign in</button>
+  <label><button id="signoutbtn">Sign out</button></label>
+  <label><button>Update Account info</button></label>
+
+    <!-- Login from -->
+
+    <div id="id01" class="modal">
+      
+      <div class="modal-content animate">
+        <div class="imgcontainer">
+          <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+          <img src="../img/img_avatar2.png" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <input type="email" placeholder="Enter Email" id="inuname" required>
+
+          <input type="password" placeholder="Enter Password" id="inpsw" required>
+            
+          <button type="submit" id="loginbtn">Login</button>
+        </div>
+
+        <div class="container">
+          <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- End of the Login from -->
+
+<!-- Sign up from -->
+  <div id="id02" class="modal">
+    <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <div class="modal-content" >
+      <div class="container">
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+        <input type="text" placeholder="Enter Email" id="upemail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+        <input type="password" placeholder="Enter Password" id="uppsw" onchange = "validatePassword()"  required>
+        <input type="password" placeholder="Repeat Password" id="uppsw-repeat" onkeyup = "validatePassword()"  required>
+        <div class="clearfix">
+          <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+          <button type="submit" class="signupbtn" id="signupbtnid">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End of the Sign up form  -->
+<!-- End Of First Tab -->
+</div>
+
+<div id="blog" class="tabcontent">
+  <div class="content">
+    <div class="image">
+        <img id="imageid" width="400px" height="200px">
+        <input type="file" id="inpimg" onchange="onFileSelected(event)">
+    </div>
+    <div class="bid">
+        <input id="blogid" type="text" placeholder="Type Blog ID">
+    </div>
+    <div class="title">
+        <input id="titleid" type="text" placeholder="Type Blog Title">
+    </div>
+    <div class="desc">
+        <input id="descid" type="text" placeholder="Type Blog Description">
+    </div>
+    <div class="date">
+        <input id="dateid" type="date" onload="getDateT()"  placeholder="Type Blog Date">
+    </div>
+    <div class="intro">
+        <textarea id="introid" type="text" placeholder="Type Blog Introduction"></textarea>
+    </div>
+    <div class="cont">
+        <textarea id="contid" type="text" placeholder="Type Blog Content"></textarea>
+    </div>
+    <div>
+        <button type="submit" id="submit">Save</button><button onclick="clearBlog()" type="reset">Reset</button>
+        <button type="button" id="bselect">Search</button><button id="bupdate"  type="button">Update</button><button id="bdelete"  type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<!-- End of Sign up Tab -->
+
+<div id="profile" class="tabcontent">
+  <p>Update your Profile</p>
+  <div class="image">
+    <img id="profileimg" width="400px" height="200px"><br>
+    <input type="file" id="proinpimg" onchange="onproFileSelected(event)">
+    <button id="saveimg">Save</button><button id="clearimg">Clear</button>
+  </div>
+  <div class="name">
+    <input type="text" id="proname" name="name" placeholder="Type Your Name">
+    <button id="savename">Save</button><button id="clearname">Clear</button>
+  </div>
+  <div class="expre">
+    <textarea id="proexpre" type="text" placeholder="Type Your Expression"></textarea>
+    <button id="saveexpre">Save</button><button id="clearexpre">Clear</button>
+  </div>
+  <div class="skill">
+    <input id="proskill" type="text" placeholder="Type Your Skill">
+    <button id="saveexp">Save</button><button id="clearexp">Clear</button>
+  </div>
+  <div class="exp">
+    <input id="proexp" type="text" placeholder="Type Your Experience">
+    <button id="saveexp">Save</button><button id="clearexp">Clear</button>
+  </div>
+  <div class="lang">
+    <input id="prolang" type="text" placeholder="Type Your Development Language">
+    <button id="savelang">Save</button><button id="clearlang">Clear</button>
+  </div>
+</div>
+
+<div id="contact" class="tabcontent">
+  <p>Contacts</p>
+  
+</div>
+
+<!-- Start of Portfolio Page -->
+<div id="portfolio" class="tabcontent">
+  <div class="content">
+    <div class="image">
+        <img id="pimageid" width="400px" height="200px">
+        <input type="file" id="pinpimg" onchange="onpFileSelected(event)">
+    </div>
+    <div class="pid">
+        <input id="ppotid" type="text" placeholder="Type Portfolio ID">
+    </div>
+    <div class="title">
+        <input id="ptitle" type="text" placeholder="Type Project Title ">
+    </div>
+    <div class="exp">
+        <input id="pexp" type="text" placeholder="Type More Explanation of your Portfolio">
+    </div>
+    <div class="link">
+        <input id="plink" type="text" placeholder="Type Link of Your Portfolio">
+    </div>
+    <div>
+        <button type="submit" id="psubmit">Save</button><button onclick="pclear()" type="reset">Reset</button>
+        <button type="button" id="pselect">Search</button><button id="pupdate"  type="button">Update</button><button id="pdelete"  type="button">Delete</button>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="form-popup" id="myForm">
+      <form  class="form-container" >
+          <img id="edit-img" src="https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg" width="170px" height="200px">
+          <input id="myInput" type="file" style="visibility:hidden" onchange="onFileSelected(event)"/>
+          <span title="attach file" class="attachFileSpan" onclick="document.getElementById('myInput').click()">
+            Change Image
+          </span>
+          <div>
+              <input type="text"  id="updname" required>
+              <input type="email" value="" id="updemail" required>
+              <input type="tel"  id="updphone" required>
+          </div>
+          <label>
+              <button class="btn">Save Changes</button><button class="close-btn" onclick="closeForm()">Cancel</button>
+           </label>    
+      </form>
+      </div>
+</section>
+
+<!-- End of Portfolio Page -->
+<div id="other" class="tabcontent">
+  <p>Other Option</p>
+</div>
+<footer>
+  <div class="top-footer">
+      <div class="address data">
+          <div>
+              <h3>Address</h3>
+          </div>
+          <div class="item-footer"><button class="icon-btn"><i class="fas fa-map-marker-alt"></i></button><span> KIGALI-RWANDA</span></div>
+          <div class="item-footer"><button class="icon-btn"><i class="fas fa-street-view"></i></button><span> KG 368 st 33</span></div>
+      </div>
+      <div class="call data">
+          <h3>Call on </h3>
+          <div class="item-footer"><button class="icon-btn"><i class="far fa-envelope"></i></button><span>+250780781546</span></div>
+          <div class="item-footer"><button class="icon-btn"><i class="fas fa-phone"></i></button><span>nishimwelys@gmail.com</span></div>
+      </div>
+      <div class="available data">
+          <h3>Available</h3>
+          <div class="item-footer"><button class="icon-btn"><i class="fab fa-twitter"></i></button><span>+250780781546</span></div>
+          <div class="item-footer"><button class="icon-btn"><i class="fab fa-facebook"></i></button><span>nishimwelys@gmail.com</span></div>
+          <div class="item-footer"><button class="icon-btn"><i class="fab fa-whatsapp"></i></button><span>+250780781546</span></div>
+      </div>
+  </div>
+  <div class="down-footer">
+      <p>All Right Reserved Kigali@ 2020</p>
+  </div>
+</footer> 
+<script src="../js/script.js"></script>
+<script src="../js/blogpost.js"></script>
+</body>
+</html> 
