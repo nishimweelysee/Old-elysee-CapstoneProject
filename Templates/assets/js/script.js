@@ -25,7 +25,10 @@ function myFunction() {
         x.className = "topnavclass";
     }
 }
-
+function checkvalid(input){
+    var res = input.checkValidity();
+    return res;
+}
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
