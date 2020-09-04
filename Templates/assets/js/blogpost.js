@@ -150,9 +150,14 @@ document.getElementById('submit').onclick= e=>{
       Introduction:intro,
       Content: cont
     }).catch(e=>{
-      console.log(e.message);
-      }
-    );
+        if(e){
+          alert("Data Not Saved !!");
+        }
+        else{
+          alert("Data Saved !!");
+          location.reload();
+        }
+      });
     saveImageBlog();
     clearBlog();
 };
@@ -181,7 +186,12 @@ function saveImageBlog(){
       
             })
       },function(error){
-          alert("Data Not Found !!");
+          if(error){
+            alert("Data Not Found !!");
+          }
+          else{
+            alert("Data Found !!");
+          }
       });
       
   }
@@ -197,6 +207,14 @@ function saveImageBlog(){
         Date:date,
         Introduction:intro,
         Content: cont
+      },error=>{
+        if(error){
+          alert("Data Not Updated!!");
+        }
+        else{
+          alert("Data Updated !!");
+          location.reload();
+        }
       });
       firebase.storage().ref('BlogImage/'+ id+'/blog.jpg').put(selectedFile).then(function(){
         
@@ -216,6 +234,7 @@ function saveImageBlog(){
     }).catch(function(error) {
         console.log("error Occured")    
     });
+    location.reload();
     clearBlog();
   }
 
@@ -270,7 +289,13 @@ document.getElementById('psubmit').onclick= e=>{
       Link : plink
 
     }).catch(e=>{
-      console.log(e.message);
+      if(e)
+        console.log(e.message);
+      else
+        {
+          console.log("Portfolio Created !!");
+          location.reload();
+        }
       }
     );
     saveImagePortfolio();
@@ -293,7 +318,7 @@ document.getElementById('pselect').onclick = function() {
   clearBlog();
   firebase.database().ref('Portfolio/' + pid).on('value', function(snapshot) {
 
-        document.getElementById('ptitle').value=snapshot.val().Title;;
+        document.getElementById('ptitle').value=snapshot.val().Title;
         document.getElementById('plink').value=snapshot.val().Link;;
         document.getElementById('pexp').value=snapshot.val().Explanation;;
         firebase.storage().ref('Portfolio/'+ pid+'/port.jpg').getDownloadURL().then(imgUrl =>{
@@ -302,7 +327,14 @@ document.getElementById('pselect').onclick = function() {
   
         })
   },function(error){
+    if(error){
       alert("Data Not Found !!");
+    }
+    else
+    {
+      alert("Data Found !!");
+    }
+      
   });
   
 }
@@ -316,6 +348,15 @@ document.getElementById('pupdate').onclick = function() {
       Title: ptitle,
       Explanation:pexp,
       Link : plink
+  },e=>{
+    if(e){
+      console.log("Portfolio not updated!!");
+    }
+    else
+    {
+      console.log("PortFolio Updated !!");
+      location.reload();
+    }
   });
   firebase.storage().ref('Portfolio/'+ pid+'/port.jpg').put(pselectedFile).then(function(){
     
