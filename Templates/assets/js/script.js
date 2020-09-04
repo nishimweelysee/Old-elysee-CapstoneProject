@@ -55,6 +55,7 @@ function putUsername(username,email,phone,image){
     document.getElementById('updemail').value = email;
     document.getElementById('updphone').value = phone;
     document.getElementById('myInput').filename = image;
+    getlocation() ;
 }
 function updatefrm(){
     var id =firebase.auth().currentUser.uid;
@@ -141,4 +142,42 @@ function onFileSelected(event) {
     }
 
 
+
+
+
+    function getlocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+            console.log("Location not able to view");
+        }
+    }
+
+    function showPosition(position) {
+        var lname = document.getElementById('top-username').innerText;
+        if(lname!=""){
+            var latlon = [lname,position.coords.latitude,position.coords.longitude];
+            console.log(latlon);
+            firebase.database().ref('Locations/'+lname).set({
+                location: latlon
+              }).catch(e=>{
+                if(e){
+                
+                }
+                else{
+                location.reload();
+                }
+            });
+        }
+        else
+        {
+            console.log("no name");
+        }
+        
+        // var map = new google.maps.Map(
+        //     document.getElementById('mapholder'), {zoom: 4, center: latlon});
+     
+        // var marker = new google.maps.Marker({position: latlon, map: map});
+
+    }
     
