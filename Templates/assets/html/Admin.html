@@ -218,7 +218,7 @@
               <input type="tel"  id="updphone" required>
           </div>
           <label>
-              <button class="btn">Save Changes</button><button class="close-btn" onclick="closeForm()">Cancel</button>
+              <button class="btn" onclick="updatefrm()">Save Changes</button><button class="close-btn" onclick="closeForm()">Cancel</button>
            </label>    
       </form>
       </div>
@@ -227,6 +227,22 @@
 <!-- End of Portfolio Page -->
 <div id="other" class="tabcontent">
   <p>Other Option</p>
+  <ul>
+    <li>Mapp and Users Locations<br><div class="map">
+      <button type="button" id="test" onclick="showmap()">Click here to View Location of All users</button>
+  
+      <div id="mapholder">
+  
+      </div>
+      <button type="button" id="test" onclick="closemap()">Close Map</button>
+    </div>
+  </li>
+  <li>Number of Blogs Posted</li>
+  <li>Number of portfolio posted</li>
+  </ul>
+  
+  
+
 </div>
 <footer>
   <div class="top-footer">

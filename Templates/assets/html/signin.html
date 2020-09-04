@@ -23,7 +23,7 @@
     <header>
         <nav>
             <ul id="topnav" class="topnavclass">
-                <li><a href="../../index.html"">Home</a></li>
+                <li><a href="../../index.html">Home</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="mblog.html">Blog</a></li>
                 <li><a href="aboutme.html">About Me</a></li>
@@ -53,7 +53,7 @@
                 <div class="content_info">
                     <div class="wrap-input100 ">
                         <i class="fa fa-user icon-btn"></i>
-                        <input id="uname" class="input100 username cred_into" type="text" placeholder="Username" required>
+                        <input id="uname" class="input100 username cred_into" type="text" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Username" required>
                     </div>
 
                     <div class="wrap-input100">
@@ -88,7 +88,7 @@
                     <input type="tel"  id="updphone" required>
                 </div>
                 <label>
-                    <button class="btn">Save Changes</button><button class="close-btn" onclick="closeForm()">Cancel</button>
+                    <button class="btn" onclick="updatefrm()">Save Changes</button><button class="close-btn" onclick="closeForm()">Cancel</button>
                  </label>    
             </form>
             </div>

@@ -68,11 +68,17 @@ var btnLogin = document.getElementById('signinid');
 btnLogin.addEventListener('click', e=>{
 	var email = document.getElementById('uname').value;
     var password = document.getElementById('pwd').value;
-
+if(document.getElementById('uname').checkValidity()){
 	firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
         // Handle Errors here.
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
+        alert("Invalid credentials");
       });
+    }
+    else
+    {
+        alert("invalid Name format!!");
+    }
 });

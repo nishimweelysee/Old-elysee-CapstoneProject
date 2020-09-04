@@ -2,11 +2,12 @@
 var nameV, passV, phoneV, emailV,photoV;
 
 function ready() {
-    nameV = document.getElementById('userid').value;
-    passV = document.getElementById('userpass').value;
-    phoneV = document.getElementById('userphone').value;
-    emailV = document.getElementById('useremail').value;
-    photoV = document.getElementById('uploadpic').value;
+
+    nameV = document.getElementById('userid');
+    passV = document.getElementById('userpass');
+    phoneV = document.getElementById('userphone');
+    emailV = document.getElementById('useremail');
+    photoV = document.getElementById('uploadpic');
 }
 function clear() {
     document.getElementById('userid').value ="";
@@ -26,24 +27,29 @@ fileButton.addEventListener('change', function(e){
 });
 document.getElementById('insert').onclick = function signupWithEmailAndPass(){
     ready();
-    firebase.auth().createUserWithEmailAndPassword(emailV,passV).then(async auth=>{
-        firebase.storage().ref('Users/'+ auth.user.uid+'/profile.jpg').put(file).then(function(){
-            console.log('Successfully uploaded');
+    if(nameV.checkValidity() && passV.checkValidity() && phoneV.checkValidity() && emailV.checkValidity() && photoV.checkValidity()){
+        firebase.auth().createUserWithEmailAndPassword(emailV.value,passV.value).then(async auth=>{
+            firebase.storage().ref('Users/'+ auth.user.uid+'/profile.jpg').put(file).then(function(){
+                console.log('Successfully uploaded');
+            }).catch(e=> {
+                console.log(e.message)
+            });
+            firebase.database().ref('users/' + auth.user.uid).set({
+                Username: nameV.value,
+                Password: passV.value,
+                PhoneNumber: phoneV.value,
+                Email: emailV.value,
+                ProfileImage:photoV.value
+            }).catch(e=>{
+                console.log(e.message);
+                }
+            );
+            clear();
         }).catch(e=> {
             console.log(e.message)
         });
-        firebase.database().ref('users/' + auth.user.uid).set({
-            Username: nameV,
-            Password: passV,
-            PhoneNumber: phoneV,
-            Email: emailV,
-            ProfileImage:photoV
-        }).catch(e=>{
-            console.log(e.message);
-            }
-        );
-        clear();
-    }).catch(e=> {
-        console.log(e.message)
-    });
+    }
+    else{
+        alert("Invalid Input");
+    }
 }
