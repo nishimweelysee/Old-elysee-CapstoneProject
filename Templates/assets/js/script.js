@@ -25,10 +25,6 @@ function myFunction() {
         x.className = "topnavclass";
     }
 }
-function checkvalid(input){
-    var res = input.checkValidity();
-    return res;
-}
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
@@ -49,15 +45,43 @@ function putImage(imgUrl,st1,st2){
     signbtn.style.display = st1;
     photobtn.style.display = st2;
 }
-function putUsername(username,email,phone){
+function putUsername(username,email,phone,image){
     if(email=="nishimwelys@gmail.com"){
         document.getElementsByClassName('adminid')[0].style.display = "inline";
     }
-    console.log(username,email,phone);
+    console.log(username,email,phone,image);
     document.getElementById('top-username').textContent = username;
     document.getElementById('updname').value = username;
     document.getElementById('updemail').value = email;
     document.getElementById('updphone').value = phone;
+    document.getElementById('myInput').filename = image;
+}
+function updatefrm(){
+    var id =firebase.auth().currentUser.uid;
+    if(selectedFile!=undefined){
+        firebase.storage().ref('Users/'+ id+'/profile.jpg').put(selectedFile).then(function(){
+        }).catch(e=> {
+            console.log(e.message)
+        });
+    }
+    var nname = document.getElementById('updname').value;
+    var npn = document.getElementById('updphone').value;
+    var nmai = document.getElementById('updemail').value;
+    var nfn = document.getElementById('myInput').filename;
+    firebase.database().ref('users/' + id).update({
+            Username: nname,
+            PhoneNumber: npn,
+            Email: nmai,
+            ProfileImage :nfn
+      },(error)=>{
+            if(error){
+                console.log(error.message);
+            }
+            else{
+                console.log("Data Updated");
+                location.reload();
+            }
+      });
 }
 
 function showoption(){
@@ -90,8 +114,7 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
             console.log(error.message);
         })
         firebase.database().ref('users/' + firebaseUser.uid).on('value', function(snapshot) {
-            console.log(snapshot.val().Username, snapshot.val().PhoneNumber, snapshot.val().Email);
-            putUsername(snapshot.val().Username,snapshot.val().Email,snapshot.val().PhoneNumber);
+            putUsername(snapshot.val().Username,snapshot.val().Email,snapshot.val().PhoneNumber,snapshot.val().ProfileImage);
         });
             
         
@@ -99,12 +122,12 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 	else{
         console.log('not looged in');
         putImage("https://as2.ftcdn.net/jpg/01/18/03/33/500_F_118033377_JKQA3UFE4joJ1k67dNoSmmoG4EsQf9Ho.jpg","inline","none");
-        putUsername("","","");
+        putUsername("","","","");
     }
 });
-
+var selectedFile;
 function onFileSelected(event) {
-    var selectedFile = event.target.files[0];
+    selectedFile = event.target.files[0];
     var reader = new FileReader();
 
     var imgtag = document.getElementById("edit-img");
